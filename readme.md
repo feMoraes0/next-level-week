@@ -4,6 +4,9 @@
 > Back end with NodeJS
 - :rocket: `parameters types`: request, query and body parameters;
 - :rocket: `http verbs`: GET, POST, PUT and DELETE;
+- :rocket: `SQL query builder`: Knex.js
+- :rocket: `migrations`
+- :rocket: 
 
 > Front end with ReactJS.
 
