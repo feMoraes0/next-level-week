@@ -3,6 +3,22 @@ import { Request, Response } from 'express';
 
 class PointsController {
 
+  async read(request: Request, response: Response) {
+    const { id } = request.params;
+
+    const point = await knex('points').where('id', id).first();
+    const items = await knex('items')
+      .join('points_items', 'items.id', '=', 'points_items.item_id')
+      .where('points_items.point_id', id)
+      .select('items.title');
+
+    if(!point) {
+      return response.status(400).json({'message': 'Point not found.'});
+    }
+
+    return response.json({point, items});
+  }
+
   async create(request: Request, response: Response) {
     const {
       name,
